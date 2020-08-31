@@ -18,15 +18,9 @@ const SplashScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+          <StatusBar backgroundColor='#4D6097' barStyle="light-content"/>
         <View style={styles.header}>
-            <Animatable.Image 
-                animation="bounceIn"
-                duraton="1500"
-            source={require('../assets/logo.png')}
-            style={styles.logo}
-            resizeMode="stretch"
-            />
+            
         </View>
         <Animatable.View 
             style={[styles.footer, {
@@ -36,16 +30,17 @@ const SplashScreen = ({navigation}) => {
         >
             <Text style={[styles.title, {
                 color: colors.text
-            }]}>Stay connected with everyone!</Text>
-            <Text style={styles.text}>Sign in with account</Text>
+            }]}>Welcome to Carentings!</Text>
+           
             <View style={styles.button}>
-            <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('LogInScreen')}>
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
+                    colors={['#4D6097', '#4D6097']}
+                    style={styles.LogIn}
                 >
                     <Text style={styles.textSign}>Get Started</Text>
                     <MaterialIcons 
+                    backgroundColor='#4D6097'
                         name="navigate-next"
                         color="#fff"
                         size={20}
@@ -66,7 +61,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: '#009387'
+    backgroundColor: '#4D6097'
   },
   header: {
       flex: 2,
@@ -95,10 +90,12 @@ const styles = StyleSheet.create({
       marginTop:5
   },
   button: {
+      
       alignItems: 'flex-end',
       marginTop: 30
   },
-  signIn: {
+  LogIn: {
+    
       width: 150,
       height: 40,
       justifyContent: 'center',
