@@ -20,7 +20,7 @@ import { AuthContext } from '../components/context';
 
 import Users from '../model/users';
 
-const SignInScreen = ({navigation}) => {
+const LogInScreen = ({navigation}) => {
 
     const [data, setData] = React.useState({
         username: '',
@@ -33,7 +33,7 @@ const SignInScreen = ({navigation}) => {
 
     const { colors } = useTheme();
 
-    const { signIn } = React.useContext(AuthContext);
+    const { LogIn } = React.useContext(AuthContext);
 
     const textInputChange = (val) => {
         if( val.trim().length >= 4 ) {
@@ -109,12 +109,12 @@ const SignInScreen = ({navigation}) => {
             ]);
             return;
         }
-        signIn(foundUser);
+        LogIn(foundUser);
     }
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+          <StatusBar backgroundColor='#4D6097' barStyle="light-content"/>
         <View style={styles.header}>
             <Text style={styles.text_header}>Welcome!</Text>
         </View>
@@ -126,15 +126,15 @@ const SignInScreen = ({navigation}) => {
         >
             <Text style={[styles.text_footer, {
                 color: colors.text
-            }]}>Username</Text>
+            }]}>Email</Text>
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color={colors.text}
+            <Feather 
+                    name="mail"
+                    color="#05375a"
                     size={20}
                 />
                 <TextInput 
-                    placeholder="Your Username"
+                    placeholder="Your Email"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -147,17 +147,13 @@ const SignInScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
             { data.isValidUser ? null : 
             <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Username must be 4 characters long.</Text>
+            
             </Animatable.View>
             }
             
@@ -208,33 +204,34 @@ const SignInScreen = ({navigation}) => {
             
 
             <TouchableOpacity>
-                <Text style={{color: '#009387', marginTop:15}}>Forgot password?</Text>
+                <Text style={{color: 'grey', marginTop:15}}>Forgot password?</Text>
             </TouchableOpacity>
             <View style={styles.button}>
                 <TouchableOpacity
-                    style={styles.signIn}
+                    style={styles.LogIn}
                     onPress={() => {loginHandle( data.username, data.password )}}
                 >
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
+                    colors={['#4D6097', '#4D6097']}
+                    style={styles.LogIn}
                 >
                     <Text style={[styles.textSign, {
                         color:'#fff'
-                    }]}>Sign In</Text>
+                    }]}>Log In</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => navigation.navigate('SignUpScreen')}
-                    style={[styles.signIn, {
-                        borderColor: '#009387',
+                    style={[styles.LogIn, {
+                        
+                        borderColor: '#4D6097',
                         borderWidth: 1,
                         marginTop: 15
                     }]}
                 >
                     <Text style={[styles.textSign, {
-                        color: '#009387'
+                        color: '#4D6097',
                     }]}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
@@ -243,12 +240,12 @@ const SignInScreen = ({navigation}) => {
     );
 };
 
-export default SignInScreen;
+export default LogInScreen;
 
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#4D6097'
     },
     header: {
         flex: 1,
@@ -291,7 +288,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
         paddingLeft: 10,
-        color: '#05375a',
+        color: '#4D6097',
     },
     errorMsg: {
         color: '#FF0000',
@@ -301,7 +298,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50
     },
-    signIn: {
+    LogIn: {
+        color:'#4D6097',
         width: '100%',
         height: 50,
         justifyContent: 'center',
